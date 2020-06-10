@@ -1,0 +1,20 @@
+﻿生成启动时间为 2020/6/10 12:39:18。
+     1>项目“E:\MyWechat3.0\MyWechat3.0\Client\Client.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../Mediator /I../Net /I../Packdef /I../Client /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Client.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\Net\UDPNet.cpp
+         UDPNet.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\MyWechat3.0\MyWechat3.0\Debug\Client.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"E:\MyWechat3.0\MyWechat3.0\Debug\Client.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\MyWechat3.0\MyWechat3.0\Debug\Client.lib" /MACHINE:X86 Debug\Client.res
+         Debug\TCPMediator.obj
+         Debug\UDPMediator.obj
+         Debug\TCPNet.obj
+         Debug\UDPNet.obj
+         Debug\Client.obj
+         Debug\ClientDlg.obj
+         Debug\stdafx.obj
+         Client.vcxproj -> E:\MyWechat3.0\MyWechat3.0\Debug\Client.exe
+     1>已完成生成项目“E:\MyWechat3.0\MyWechat3.0\Client\Client.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.48
