@@ -8,7 +8,7 @@ public:
 public:
 	bool InitNetWork();
 	void UnInitNetWork();
-	bool SendData(long lSendIp,char *szbuf,int nLen);
+	bool SendData(char* szbuf,int nlen);
 
 };
 

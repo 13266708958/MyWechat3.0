@@ -10,7 +10,7 @@ public:
 public:
 	bool Open();
 	void Close();
-	bool SendData(long lSendIp,char *szbuf,int nLen);
+	bool SendData(char *szbuf,int nLen);
 	void DealData(long lRecvIp,char *szbuf);
 private:
 	INet *m_pNet;

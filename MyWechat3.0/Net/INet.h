@@ -12,6 +12,6 @@ public:
 public:
 	virtual bool InitNetWork() =0;
 	virtual void UnInitNetWork() =0;
-	virtual bool SendData(long lSendIp,char *szbuf,int nLen)=0;
+	virtual bool SendData(long lSendIp,char *szbuf,int nLen){ return true;};
 	
 };

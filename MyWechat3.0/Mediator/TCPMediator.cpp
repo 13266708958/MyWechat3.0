@@ -27,9 +27,9 @@ void TCPMediator::Close()
 	m_pNet->UnInitNetWork();
 }
 
-bool TCPMediator::SendData(long lSendIp,char *szbuf,int nLen)
+bool TCPMediator::SendData(char *szbuf,int nLen)
 {
-	
+	dynamic_cast<TCPNet *>(m_pNet)->SendData(szbuf,nLen);//使用父类的指针调用子类的函数
 	return true;
 }
 

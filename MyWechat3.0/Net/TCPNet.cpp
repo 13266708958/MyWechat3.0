@@ -21,7 +21,7 @@ void TCPNet::UnInitNetWork()
 
 }
 
-bool TCPNet::SendData(long lSendIp,char *szbuf,int nLen)
+bool TCPNet::SendData(char* szbuf,int nlen)
 {
 	return true;
 }

@@ -97,7 +97,7 @@ unsigned  __stdcall UDPNet::ThreadProc( void * lpvoid)
 	while(pthis->m_bQuit)
 	{
 		fTemp= pthis->m_fd;
-		/*if(FD_ISSET(pthis->m_sUdpSock,&fTemp))*/
+		if(FD_ISSET(pthis->m_sSock,&fTemp))
 		{
 			ZeroMemory(szbuf,_DEF_PACKSIZE);
 			nRelReadNum = recvfrom(pthis->m_sSock,szbuf,sizeof(szbuf),0,(sockaddr *)&addrClient,&nsize);
