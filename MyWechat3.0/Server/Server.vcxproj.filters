@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="网络">
+      <UniqueIdentifier>{151ccb91-a97a-4e16-ba5a-4755e4bd846c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="协议">
+      <UniqueIdentifier>{f1b4399a-f173-4f54-89ea-f5f9b47faeb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="数据库">
+      <UniqueIdentifier>{a67672c9-2ec0-4f59-855d-35bb77bded47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -33,6 +42,21 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Net\INet.h">
+      <Filter>网络</Filter>
+    </ClInclude>
+    <ClInclude Include="Net\TCPNet.h">
+      <Filter>网络</Filter>
+    </ClInclude>
+    <ClInclude Include="Net\UDPNet.h">
+      <Filter>网络</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Packdef\PackDef.h">
+      <Filter>协议</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MySQL\CMySql.h">
+      <Filter>数据库</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">
@@ -43,6 +67,15 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Net\TCPNet.cpp">
+      <Filter>网络</Filter>
+    </ClCompile>
+    <ClCompile Include="Net\UDPNet.cpp">
+      <Filter>网络</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MySQL\CMySql.cpp">
+      <Filter>数据库</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

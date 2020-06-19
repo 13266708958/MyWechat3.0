@@ -28,8 +28,7 @@ public:
 // 实现
 protected:
 	DECLARE_MESSAGE_MAP()
-public:
-	afx_msg void OnBnClickedButton2();
+
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(CAboutDlg::IDD)
@@ -42,7 +41,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
-	ON_BN_CLICKED(IDC_BUTTON2, &CAboutDlg::OnBnClickedButton2)
+
 END_MESSAGE_MAP()
 
 
@@ -52,6 +51,8 @@ END_MESSAGE_MAP()
 
 CClientDlg::CClientDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CClientDlg::IDD, pParent)
+	, m_sLogID(_T("123456"))
+	, m_sLogPassword(_T("123456"))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,6 +60,10 @@ CClientDlg::CClientDlg(CWnd* pParent /*=NULL*/)
 void CClientDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_EDIT1, m_sLogID);
+	DDV_MaxChars(pDX, m_sLogID, 10);
+	DDX_Text(pDX, IDC_EDIT2, m_sLogPassword);
+	DDV_MaxChars(pDX, m_sLogPassword, 15);
 }
 
 BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
@@ -66,6 +71,7 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BUTTON1, &CClientDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &CClientDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -156,13 +162,35 @@ HCURSOR CClientDlg::OnQueryDragIcon()
 
 
 
-void CClientDlg::OnBnClickedButton1()//登陆按键
+void CClientDlg::OnBnClickedButton1()//登录按键
 {
 	// TODO: 在此添加控件通知处理程序代码
+	STRU_LOGIN sl;
+	sl.m_nType = _DEF_PROTOCOL_LOGIN_RQ;//登录协议消息
+	gethostname(sl.m_szName,sizeof(sl.m_szName));//获取主机名
+	UpdateData(TRUE);
+	strcpy_s(sl.m_sUserId,m_sLogID);
+	strcpy_s(sl.m_sUserPassword,m_sLogPassword);
+	UpdateData(FALSE);
+	if(theApp.m_pMediator->SendData(INADDR_BROADCAST,(char *)&sl,sizeof(sl)))//INADDR_BROADCAST局域网广播
+	{
+		//GetDlgMain();
+	}
 }
 
 
-void CAboutDlg::OnBnClickedButton2()//注册按键
+void CClientDlg::OnBnClickedButton2()//注册按键
 {
 	// TODO: 在此添加控件通知处理程序代码
+	STRU_REGISTER sr;
+	sr.m_nType =_DEF_PROTOCOL_REGISTER_RQ;//注册请求
+	gethostname(sr.m_szName,sizeof(sr.m_szName));
+	UpdateData(TRUE);
+	strcpy_s(sr.m_sUserId,m_sLogID);
+	strcpy_s(sr.m_sUserPassword,m_sLogPassword);
+	UpdateData(FALSE);
+	if(theApp.m_pMediator->SendData(INADDR_BROADCAST,(char *)&sr,sizeof(sr)))//INADDR_BROADCAST局域网广播
+	{
+		//GetDlgMain();
+	}
 }
