@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include"PackDef.h"
 
 // CServerDlg ¶Ô»°¿ò
 class CServerDlg : public CDialogEx
@@ -29,4 +29,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	LRESULT OnLogMsg(WPARAM W,LPARAM L);//µÇÂ¼
 };

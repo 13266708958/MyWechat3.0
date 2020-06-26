@@ -9,8 +9,8 @@
 #endif
 
 #include "resource.h"		// 主符号
-
-
+#include"IMediator.h"
+#include"CMySql.h"
 // CServerApp:
 // 有关此类的实现，请参阅 Server.cpp
 //
@@ -25,7 +25,9 @@ public:
 	virtual BOOL InitInstance();
 
 // 实现
-
+public:
+	IMediator * m_pMediator;
+	CMySql m_Sql;
 	DECLARE_MESSAGE_MAP()
 };
 

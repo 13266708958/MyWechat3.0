@@ -22,6 +22,12 @@
     <Filter Include="数据库">
       <UniqueIdentifier>{a67672c9-2ec0-4f59-855d-35bb77bded47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="中介者">
+      <UniqueIdentifier>{6a2ddbd8-d668-4ea9-b7f3-362865acbcf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="数据处理">
+      <UniqueIdentifier>{2b731c19-144c-4adc-80da-cadfe3ca27c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -57,6 +63,24 @@
     <ClInclude Include="..\MySQL\CMySql.h">
       <Filter>数据库</Filter>
     </ClInclude>
+    <ClInclude Include="Mediator\IMediator.h">
+      <Filter>中介者</Filter>
+    </ClInclude>
+    <ClInclude Include="Mediator\TCPMediator.h">
+      <Filter>中介者</Filter>
+    </ClInclude>
+    <ClInclude Include="Mediator\UDPMediator.h">
+      <Filter>中介者</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\Log.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateStrategy\DealDateStrategy.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\DealDateFactory.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">
@@ -76,6 +100,15 @@
     </ClCompile>
     <ClCompile Include="..\MySQL\CMySql.cpp">
       <Filter>数据库</Filter>
+    </ClCompile>
+    <ClCompile Include="Mediator\TCPMediator.cpp">
+      <Filter>中介者</Filter>
+    </ClCompile>
+    <ClCompile Include="Mediator\UDPMediator.cpp">
+      <Filter>中介者</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\Log.cpp">
+      <Filter>数据处理</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

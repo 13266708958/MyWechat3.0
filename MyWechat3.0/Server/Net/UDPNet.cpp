@@ -54,11 +54,7 @@ bool UDPNet::InitNetWork()
 	u_long uval =1;
 	ioctlsocket(m_sSock,FIONBIO,&uval);//设置socket为非阻塞
 
-	FD_SET(m_sSock,&m_fd);//将socket放入集合
-	timeval tv;
-	tv.tv_sec = 0;
-	tv.tv_usec =100;
-	select(0,&m_fd,0,0,&tv);
+	
 	if(INVALID_SOCKET == m_sSock)
 	{
 		UnInitNetWork();
@@ -72,7 +68,7 @@ bool UDPNet::InitNetWork()
 	//3.绑定地址
 	sockaddr_in addr;
 	addr.sin_family=AF_INET;
-	addr.sin_port =htons(_DEF_PORT_CLIENT);
+	addr.sin_port =htons(_DEF_PORT_SERVER);
 	addr.sin_addr.S_un.S_addr =INADDR_ANY;//设置本机任意地址
 	if(SOCKET_ERROR == bind(m_sSock,(const sockaddr*)&addr,sizeof(addr)))
 	{
@@ -80,6 +76,11 @@ bool UDPNet::InitNetWork()
 		return false;
 	}
 
+	FD_SET(m_sSock,&m_fd);//将socket放入集合
+	timeval tv;
+	tv.tv_sec = 0;
+	tv.tv_usec =100;
+	select(0,&m_fd,0,0,&tv);
 	//4.创建线程
 	m_hThread =(HANDLE)_beginthreadex(NULL,0,&ThreadProc,this,0,0);
 
@@ -104,7 +105,7 @@ unsigned  __stdcall UDPNet::ThreadProc( void * lpvoid)
 			if( nRelReadNum>0 )
 			{
 				//处理接收的数据
-				//theApp.m_pMediator->DealData(addrClient.sin_addr.s_addr,szbuf);
+				theApp.m_pMediator->DealData(addrClient.sin_addr.s_addr,szbuf);
 			}
 		}
 	}
@@ -133,5 +134,16 @@ void UDPNet::UnInitNetWork()
 
 bool UDPNet::SendData(long lSendIp,char *szbuf,int nLen)
 {
+	if(!szbuf || nLen <=0)
+		return false;
+	sockaddr_in addr;
+	addr.sin_family = AF_INET;
+	addr.sin_addr.S_un.S_addr = lSendIp;
+	addr.sin_port = htons(_DEF_PORT_CLIENT);
+	if(sendto(m_sSock,szbuf,nLen,0,(const sockaddr*)&addr,sizeof(addr)) == SOCKET_ERROR)
+	{
+		int errNo = WSAGetLastError();
+		return false;
+	}
 	return true;
 }

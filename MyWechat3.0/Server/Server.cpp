@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "Server.h"
 #include "ServerDlg.h"
+#include"UDPMediator.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -26,6 +27,7 @@ CServerApp::CServerApp()
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 
 	// TODO: 在此处添加构造代码，
+	m_pMediator = new UDPMediator;
 	// 将所有重要的初始化放置在 InitInstance 中
 }
 
@@ -69,6 +71,9 @@ BOOL CServerApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
+	
+	if(!m_Sql.ConnectMySql("localhost","root","ji123698745","Chat_UserAccount"))
+		return false;
 
 	CServerDlg dlg;
 	m_pMainWnd = &dlg;

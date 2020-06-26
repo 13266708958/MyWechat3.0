@@ -1,11 +1,14 @@
-﻿生成启动时间为 2020/6/19 23:09:07。
+﻿生成启动时间为 2020/6/26 23:28:55。
      1>项目“E:\MyWechat3.0\MyWechat3.0\Server\Server.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I../Packdef /I./Net /I../Server /I../MySQL /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\Server.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt Net\UDPNet.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I./DealDateStrategy /I../Packdef /I./Net /I../Server /I../ /I../MySQL /I./Mediator /I../../Packdef /I../../MySQL /I../DealDateStrategy /I./DealDateFactory /I../DealDateFactory /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _WINDOWS /D _DEBUG /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"x64\Debug\Server.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt Net\UDPNet.cpp
          UDPNet.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\MyWechat3.0\MyWechat3.0\x64\Debug\Server.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"E:\MyWechat3.0\MyWechat3.0\x64\Debug\Server.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\MyWechat3.0\MyWechat3.0\x64\Debug\Server.lib" /MACHINE:X64 x64\Debug\Server.res
          x64\Debug\CMySql.obj
+         x64\Debug\Log.obj
+         x64\Debug\TCPMediator.obj
+         x64\Debug\UDPMediator.obj
          x64\Debug\TCPNet.obj
          x64\Debug\UDPNet.obj
          x64\Debug\Server.obj
@@ -16,4 +19,4 @@
 
 生成成功。
 
-已用时间 00:00:03.95
+已用时间 00:00:01.83

@@ -107,7 +107,10 @@ BOOL CClientDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-
+	if(!theApp.m_pMediator->Open())
+	{
+		MessageBox(_T("Client can't open !"));
+	}
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -172,7 +175,7 @@ void CClientDlg::OnBnClickedButton1()//登录按键
 	strcpy_s(sl.m_sUserId,m_sLogID);
 	strcpy_s(sl.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
-	if(theApp.m_pMediator->SendData(INADDR_BROADCAST,(char *)&sl,sizeof(sl)))//INADDR_BROADCAST局域网广播
+	if(theApp.m_pMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl)))//INADDR_BROADCAST局域网广播
 	{
 		//GetDlgMain();
 	}
@@ -189,7 +192,7 @@ void CClientDlg::OnBnClickedButton2()//注册按键
 	strcpy_s(sr.m_sUserId,m_sLogID);
 	strcpy_s(sr.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
-	if(theApp.m_pMediator->SendData(INADDR_BROADCAST,(char *)&sr,sizeof(sr)))//INADDR_BROADCAST局域网广播
+	if(theApp.m_pMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sr,sizeof(sr)))//INADDR_BROADCAST局域网广播
 	{
 		//GetDlgMain();
 	}

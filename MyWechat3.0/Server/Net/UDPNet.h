@@ -1,6 +1,8 @@
 #pragma once
 #include "inet.h"
-
+#include <winsock2.h>
+#include <ws2ipdef.h>
+#pragma comment(lib, "ws2_32.lib")
 class UDPNet :
 	public INet
 {

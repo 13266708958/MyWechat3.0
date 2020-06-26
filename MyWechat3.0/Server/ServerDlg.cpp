@@ -62,11 +62,21 @@ BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_MESSAGE(UM_LOGINMSG,&CServerDlg::OnLogMsg)
 END_MESSAGE_MAP()
 
 
 // CServerDlg 消息处理程序
+LRESULT CServerDlg::OnLogMsg(WPARAM W,LPARAM L)
+{
+	STRU_ONLINE so;
+	long ip = (long ) L;
+	so.m_nType = _DEF_PROTOCOL_ONLINE_RS;//上线确认消息
+	gethostname(so.m_szName,sizeof(so.m_szName));//获取主机名
+	theApp.m_pMediator->SendData(ip,(char*)&so,sizeof(so));
 
+	return 0;
+}
 BOOL CServerDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -97,7 +107,10 @@ BOOL CServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-
+	if(!theApp.m_pMediator->Open())
+	{
+		MessageBox(_T("Server can't open !"));
+	}
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 

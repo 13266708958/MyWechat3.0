@@ -1,9 +1,9 @@
 #pragma once
-#include <winsock2.h>
-#include <ws2ipdef.h>
+
 #include <process.h>
 #include"PackDef.h"
 #include"Server.h"
+
 class INet
 {
 public:

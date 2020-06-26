@@ -26,6 +26,7 @@ bool UDPNet::InitNetWork()
 	wVersionRequested = MAKEWORD(2, 2);
 
 	err = WSAStartup(wVersionRequested, &wsaData);
+
 	if (err != 0) {
 		/* Tell the user that we could not find a usable */
 		/* Winsock DLL.                                  */
@@ -54,11 +55,8 @@ bool UDPNet::InitNetWork()
 	u_long uval =1;
 	ioctlsocket(m_sSock,FIONBIO,&uval);//设置socket为非阻塞
 
-	FD_SET(m_sSock,&m_fd);//将socket放入集合
-	timeval tv;
-	tv.tv_sec = 0;
-	tv.tv_usec =100;
-	select(0,&m_fd,0,0,&tv);
+
+
 	if(INVALID_SOCKET == m_sSock)
 	{
 		UnInitNetWork();
@@ -79,7 +77,11 @@ bool UDPNet::InitNetWork()
 		UnInitNetWork();
 		return false;
 	}
-
+	FD_SET(m_sSock,&m_fd);//将socket放入集合
+	timeval tv;
+	tv.tv_sec = 0;
+	tv.tv_usec =100;
+	select(0,&m_fd,NULL,NULL,&tv);
 	//4.创建线程
 	m_hThread =(HANDLE)_beginthreadex(NULL,0,&ThreadProc,this,0,0);
 
@@ -133,5 +135,17 @@ void UDPNet::UnInitNetWork()
 
 bool UDPNet::SendData(long lSendIp,char *szbuf,int nLen)
 {
+	if(!szbuf || nLen <=0)
+		return false;
+	sockaddr_in addr;
+	addr.sin_family = AF_INET;
+	addr.sin_addr.S_un.S_addr = lSendIp;
+	addr.sin_port = htons(_DEF_PORT_SERVER);
+	if(sendto(m_sSock,szbuf,nLen,0,(const sockaddr*)&addr,sizeof(addr)) == SOCKET_ERROR)
+	{
+		int errNo = WSAGetLastError();
+		return false;
+	}
 	return true;
+	
 }
