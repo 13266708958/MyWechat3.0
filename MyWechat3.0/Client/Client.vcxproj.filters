@@ -22,6 +22,9 @@
     <Filter Include="中介者">
       <UniqueIdentifier>{0794269d-b4b7-41eb-90d8-b77947302c2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="数据处理">
+      <UniqueIdentifier>{1283af5e-429a-441a-92c9-b55bc9322b76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -63,6 +66,18 @@
     <ClInclude Include="Mediator\UDPMediator.h">
       <Filter>中介者</Filter>
     </ClInclude>
+    <ClInclude Include="DealDateFactory\DealDateFactory.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateStrategy\DealDateStrategy.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\OnLine.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogMain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -85,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="Mediator\UDPMediator.cpp">
       <Filter>中介者</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\OnLine.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogMain.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

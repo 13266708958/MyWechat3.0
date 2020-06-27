@@ -191,6 +191,7 @@
     <ClInclude Include="..\Packdef\PackDef.h" />
     <ClInclude Include="DealDateFactory\DealDateFactory.h" />
     <ClInclude Include="DealDateFactory\Log.h" />
+    <ClInclude Include="DealDateFactory\Reg.h" />
     <ClInclude Include="DealDateStrategy\DealDateStrategy.h" />
     <ClInclude Include="Mediator\IMediator.h" />
     <ClInclude Include="Mediator\TCPMediator.h" />
@@ -207,6 +208,7 @@
   <ItemGroup>
     <ClCompile Include="..\MySQL\CMySql.cpp" />
     <ClCompile Include="DealDateFactory\Log.cpp" />
+    <ClCompile Include="DealDateFactory\Reg.cpp" />
     <ClCompile Include="Mediator\TCPMediator.cpp" />
     <ClCompile Include="Mediator\UDPMediator.cpp" />
     <ClCompile Include="Net\TCPNet.cpp" />

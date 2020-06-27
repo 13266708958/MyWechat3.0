@@ -24,12 +24,11 @@ void Log::DealDate(long lRecvIp,char *szbuf)
 		strlist.pop_front();
 		if(strcmp(passWord.c_str(),psl->m_sUserPassword) == 0)
 		{
-			CString str;
-			str.Format("%s",psl->m_sUserId);
+			/*CString str;
+			str.Format("%s",psl->m_sUserId);*/
 			//m_pUdpNet->m_mIdToAddr[str] = lRecvIp;
-			
 			//m_pUdpNet->SendDataToServer(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl));//·¢ËÍµÇÂ¼»Ø¸´
-			theApp.m_pMainWnd->SendMessage(UM_LOGINMSG,NULL,lRecvIp);
+			theApp.m_pMainWnd->SendMessage(UM_ONLINEMSG,(WPARAM)psl->m_szName,lRecvIp);
 			break;
 		}
 

@@ -70,10 +70,16 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_MESSAGE(UM_ONLINEMSG,&CClientDlg::OnLineMsg)
 	ON_BN_CLICKED(IDC_BUTTON1, &CClientDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CClientDlg::OnBnClickedButton2)
-END_MESSAGE_MAP()
 
+END_MESSAGE_MAP()
+LRESULT CClientDlg::OnLineMsg(WPARAM W,LPARAM L)
+{
+	GetDlgMain();
+	return 0;
+}
 
 // CClientDlg 消息处理程序
 
@@ -164,7 +170,14 @@ HCURSOR CClientDlg::OnQueryDragIcon()
 }
 
 
-
+CDialogMain * CClientDlg::GetDlgMain()
+{
+	CDialogMain pDlg;
+	theApp.m_pMainWnd = &pDlg;
+	CClientDlg::EndDialog(IDOK);
+	pDlg.DoModal();
+	return &pDlg;
+}
 void CClientDlg::OnBnClickedButton1()//登录按键
 {
 	// TODO: 在此添加控件通知处理程序代码

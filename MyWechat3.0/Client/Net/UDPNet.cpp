@@ -77,11 +77,11 @@ bool UDPNet::InitNetWork()
 		UnInitNetWork();
 		return false;
 	}
-	FD_SET(m_sSock,&m_fd);//将socket放入集合
-	timeval tv;
-	tv.tv_sec = 0;
-	tv.tv_usec =100;
-	select(0,&m_fd,NULL,NULL,&tv);
+	//FD_SET(m_sSock,&m_fd);//将socket放入集合
+	//timeval tv;
+	//tv.tv_sec = 0;
+	//tv.tv_usec =100;
+	//select(0,&m_fd,NULL,NULL,&tv);
 	//4.创建线程
 	m_hThread =(HANDLE)_beginthreadex(NULL,0,&ThreadProc,this,0,0);
 
@@ -98,8 +98,8 @@ unsigned  __stdcall UDPNet::ThreadProc( void * lpvoid)
 	fd_set fTemp;
 	while(pthis->m_bQuit)
 	{
-		fTemp= pthis->m_fd;
-		if(FD_ISSET(pthis->m_sSock,&fTemp))
+		/*fTemp= pthis->m_fd;
+		if(FD_ISSET(pthis->m_sSock,&fTemp))*/
 		{
 			ZeroMemory(szbuf,_DEF_PACKSIZE);
 			nRelReadNum = recvfrom(pthis->m_sSock,szbuf,sizeof(szbuf),0,(sockaddr *)&addrClient,&nsize);

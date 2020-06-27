@@ -1,6 +1,7 @@
 #pragma once
 #include"PackDef.h"
 #include"Log.h"
+#include"Reg.h"
 class DealDateStrategy
 {
 public:
@@ -14,6 +15,10 @@ public:
 		case _DEF_PROTOCOL_LOGIN_RQ://µÇÂ¼ÇëÇó
 			m_pDealDateFactory = new Log();
 			break;
+		case _DEF_PROTOCOL_REGISTER_RQ://×¢²áÇëÇó
+			m_pDealDateFactory = new Reg();
+			break;
+
 		}
 		return m_pDealDateFactory;
 	}

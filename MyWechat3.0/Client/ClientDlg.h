@@ -4,7 +4,7 @@
 
 #pragma once
 #include"PackDef.h"
-
+#include"DialogMain.h"
 // CClientDlg 对话框
 class CClientDlg : public CDialogEx
 {
@@ -29,6 +29,10 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CDialogMain * GetDlgMain();
+public:
+	LRESULT OnLineMsg(WPARAM W,LPARAM L);//上线
 public:
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();

@@ -4,6 +4,7 @@
 
 #pragma once
 #include"PackDef.h"
+#include "afxcmn.h"
 
 // CServerDlg 对话框
 class CServerDlg : public CDialogEx
@@ -30,5 +31,6 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	LRESULT OnLogMsg(WPARAM W,LPARAM L);//登录
+	LRESULT OnLineMsg(WPARAM W,LPARAM L);//上线
+	CListCtrl m_lUserList;
 };

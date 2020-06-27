@@ -5,6 +5,7 @@
 UDPMediator::UDPMediator(void)
 {
 	m_pNet =new UDPNet;
+	m_pdealDateStrategy = new DealDateStrategy();
 }
 
 
@@ -35,5 +36,6 @@ bool UDPMediator::SendData(long lSendIp,char *szbuf,int nLen)
 
 void UDPMediator::DealData(long lRecvIp,char *szbuf)
 {
-
+	m_pdealDateFactory = m_pdealDateStrategy->CreateDealDateStrategy(szbuf);
+	m_pdealDateFactory->DealDate(lRecvIp,szbuf);
 }
