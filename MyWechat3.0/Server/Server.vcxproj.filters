@@ -81,6 +81,12 @@
     <ClInclude Include="DealDateFactory\DealDateFactory.h">
       <Filter>数据处理</Filter>
     </ClInclude>
+    <ClInclude Include="DealDateFactory\Reg.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\AddFriend.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">
@@ -108,6 +114,12 @@
       <Filter>中介者</Filter>
     </ClCompile>
     <ClCompile Include="DealDateFactory\Log.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\Reg.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\AddFriend.cpp">
       <Filter>数据处理</Filter>
     </ClCompile>
   </ItemGroup>

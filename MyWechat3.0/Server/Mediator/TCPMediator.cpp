@@ -27,13 +27,13 @@ void TCPMediator::Close()
 	m_pNet->UnInitNetWork();
 }
 
-bool TCPMediator::SendData(char *szbuf,int nLen)
+bool TCPMediator::SendData(SOCKET sock,char *szbuf,int nLen)
 {
-	dynamic_cast<TCPNet *>(m_pNet)->SendData(szbuf,nLen);//使用父类的指针调用子类的函数
+	dynamic_cast<TCPNet *>(m_pNet)->SendData(sock,szbuf,nLen);//使用父类的指针调用子类的函数
 	return true;
 }
 
-void TCPMediator::DealData(long lRecvIp,char *szbuf)
+void TCPMediator::DealData(SOCKET sock,char *szbuf)
 {
 
 }

@@ -10,7 +10,8 @@
 
 #include "resource.h"		// 主符号
 #include"IMediator.h"
-
+#include<list>
+#include<map>
 // CClientApp:
 // 有关此类的实现，请参阅 Client.cpp
 //
@@ -26,9 +27,12 @@ public:
 
 // 实现
 public:
-	IMediator * m_pMediator;
-
+	IMediator * m_pUDPMediator;
+	IMediator * m_pTCPMediator;
+public:
+	
 	DECLARE_MESSAGE_MAP()
+	virtual int ExitInstance();
 };
 
 extern CClientApp theApp;

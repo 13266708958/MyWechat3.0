@@ -113,7 +113,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./Mediator;./Net;../Packdef;../Client;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Mediator;./Net;../Packdef;../Client;../;./DealDateFactory;../DealDateFactory;./DealDateStrategy;../DealDateStrategy;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -189,6 +189,10 @@
     <ClInclude Include="..\Packdef\PackDef.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientDlg.h" />
+    <ClInclude Include="DealDateFactory\DealDateFactory.h" />
+    <ClInclude Include="DealDateFactory\OnLine.h" />
+    <ClInclude Include="DealDateStrategy\DealDateStrategy.h" />
+    <ClInclude Include="DialogMain.h" />
     <ClInclude Include="Mediator\IMediator.h" />
     <ClInclude Include="Mediator\TCPMediator.h" />
     <ClInclude Include="Mediator\UDPMediator.h" />
@@ -202,6 +206,8 @@
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientDlg.cpp" />
+    <ClCompile Include="DealDateFactory\OnLine.cpp" />
+    <ClCompile Include="DialogMain.cpp" />
     <ClCompile Include="Mediator\TCPMediator.cpp" />
     <ClCompile Include="Mediator\UDPMediator.cpp" />
     <ClCompile Include="Net\TCPNet.cpp" />

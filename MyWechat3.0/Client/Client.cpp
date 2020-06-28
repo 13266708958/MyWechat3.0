@@ -6,6 +6,7 @@
 #include "Client.h"
 #include "ClientDlg.h"
 #include"UDPMediator.h"
+#include"TCPMediator.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -27,8 +28,8 @@ CClientApp::CClientApp()
 
 	// TODO: 在此处添加构造代码，
 	// 将所有重要的初始化放置在 InitInstance 中
-	m_pMediator = new UDPMediator;
-
+	m_pUDPMediator = new UDPMediator;
+	m_pTCPMediator = new TCPMediator;
 }
 
 
@@ -102,3 +103,12 @@ BOOL CClientApp::InitInstance()
 	return FALSE;
 }
 
+
+
+int CClientApp::ExitInstance()
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	delete m_pUDPMediator;
+	delete m_pTCPMediator;
+	return CWinApp::ExitInstance();
+}

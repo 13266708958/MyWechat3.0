@@ -67,7 +67,7 @@ struct STRU_ADD
 {
 	PackType m_nType;
 	char     m_szName[_DEF_SIZE];
-	char m_sUserId[_DEF_IDSIZE];
+	char     m_sUserId[_DEF_IDSIZE];
 	long     m_lAddIp;
 };
 struct STRU_LOGIN

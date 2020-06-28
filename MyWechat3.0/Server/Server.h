@@ -11,6 +11,8 @@
 #include "resource.h"		// 主符号
 #include"IMediator.h"
 #include"CMySql.h"
+#include<list>
+#include<map>
 // CServerApp:
 // 有关此类的实现，请参阅 Server.cpp
 //
@@ -26,8 +28,13 @@ public:
 
 // 实现
 public:
-	IMediator * m_pMediator;
+	IMediator * m_pUDPMediator;
+	IMediator * m_pTCPMediator;
 	CMySql m_Sql;
+public:
+	static std::list<long > addrList;
+	static std::map<CString ,long > m_mIdToAddr;
+	
 	DECLARE_MESSAGE_MAP()
 };
 

@@ -19,13 +19,13 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// 对话框数据
+	// 对话框数据
 	enum { IDD = IDD_ABOUTBOX };
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
-// 实现
+	// 实现
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -56,24 +56,44 @@ CServerDlg::CServerDlg(CWnd* pParent /*=NULL*/)
 void CServerDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST3, m_lUserList);
 }
 
 BEGIN_MESSAGE_MAP(CServerDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_MESSAGE(UM_LOGINMSG,&CServerDlg::OnLogMsg)
+	ON_MESSAGE(UM_ONLINEMSG,&CServerDlg::OnLineMsg)
 END_MESSAGE_MAP()
 
 
 // CServerDlg 消息处理程序
-LRESULT CServerDlg::OnLogMsg(WPARAM W,LPARAM L)
+LRESULT CServerDlg::OnLineMsg(WPARAM W,LPARAM L)
 {
 	STRU_ONLINE so;
-	long ip = (long ) L;
+	long ip = (long )L;
+
+	char *szname = ( char * )W;
+	in_addr  addr;
+	addr.S_un.S_addr = L;
+	char *szip =  inet_ntoa(addr);
+
 	so.m_nType = _DEF_PROTOCOL_ONLINE_RS;//上线确认消息
 	gethostname(so.m_szName,sizeof(so.m_szName));//获取主机名
-	theApp.m_pMediator->SendData(ip,(char*)&so,sizeof(so));
+	theApp.m_pUDPMediator->SendData(ip,(char*)&so,sizeof(so));
+
+	auto ite =theApp.addrList.begin();
+	while(ite !=theApp.addrList.end())
+	{
+		if(ip == (*ite))
+			return 0;
+		ite++;
+	}
+
+	theApp.addrList.push_front(ip);
+
+	m_lUserList.InsertItem(0,szname);//在用户名链表头部插入
+	m_lUserList.SetItemText(0,1,szip);//在ip名链表插入
 
 	return 0;
 }
@@ -107,9 +127,16 @@ BOOL CServerDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	if(!theApp.m_pMediator->Open())
+	m_lUserList.InsertColumn(0,_T("name"),0,200);
+	m_lUserList.InsertColumn(1,_T("IP"),0,200);
+
+	if(!theApp.m_pUDPMediator->Open())
 	{
-		MessageBox(_T("Server can't open !"));
+		MessageBox(_T("Server UDP can't open !"));
+	}
+	if(!theApp.m_pTCPMediator->Open())
+	{
+		MessageBox(_T("Server TCP can't open !"));
 	}
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }

@@ -114,7 +114,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./DealDateStrategy;../Packdef;./Net;../Server;../;../MySQL;./Mediator;../../Packdef;../../MySQL;../DealDateStrategy;./DealDateFactory;../DealDateFactory</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./DealDateStrategy;../Packdef;./Net;../Server;../;../MySQL;./Mediator;../../Packdef;../../MySQL;../DealDateStrategy;./DealDateFactory;../DealDateFactory;../Net;./Net;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -189,8 +189,10 @@
   <ItemGroup>
     <ClInclude Include="..\MySQL\CMySql.h" />
     <ClInclude Include="..\Packdef\PackDef.h" />
+    <ClInclude Include="DealDateFactory\AddFriend.h" />
     <ClInclude Include="DealDateFactory\DealDateFactory.h" />
     <ClInclude Include="DealDateFactory\Log.h" />
+    <ClInclude Include="DealDateFactory\Reg.h" />
     <ClInclude Include="DealDateStrategy\DealDateStrategy.h" />
     <ClInclude Include="Mediator\IMediator.h" />
     <ClInclude Include="Mediator\TCPMediator.h" />
@@ -206,7 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\MySQL\CMySql.cpp" />
+    <ClCompile Include="DealDateFactory\AddFriend.cpp" />
     <ClCompile Include="DealDateFactory\Log.cpp" />
+    <ClCompile Include="DealDateFactory\Reg.cpp" />
     <ClCompile Include="Mediator\TCPMediator.cpp" />
     <ClCompile Include="Mediator\UDPMediator.cpp" />
     <ClCompile Include="Net\TCPNet.cpp" />

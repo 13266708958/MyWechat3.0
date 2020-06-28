@@ -70,10 +70,17 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_MESSAGE(UM_ONLINEMSG,&CClientDlg::OnLineMsg)
 	ON_BN_CLICKED(IDC_BUTTON1, &CClientDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CClientDlg::OnBnClickedButton2)
-END_MESSAGE_MAP()
 
+	ON_WM_CLOSE()
+END_MESSAGE_MAP()
+LRESULT CClientDlg::OnLineMsg(WPARAM W,LPARAM L)
+{
+	GetDlgMain();
+	return 0;
+}
 
 // CClientDlg 消息处理程序
 
@@ -107,9 +114,13 @@ BOOL CClientDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	if(!theApp.m_pMediator->Open())
+	if(!theApp.m_pUDPMediator->Open())
 	{
-		MessageBox(_T("Client can't open !"));
+		MessageBox(_T("Client UDP can't open !"));
+	}
+	if(!theApp.m_pTCPMediator->Open())
+	{
+		MessageBox(_T("Client TCP can't open !"));
 	}
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -164,7 +175,14 @@ HCURSOR CClientDlg::OnQueryDragIcon()
 }
 
 
-
+CDialogMain * CClientDlg::GetDlgMain()
+{
+	CDialogMain pDlg;
+	theApp.m_pMainWnd = &pDlg;
+	CClientDlg::EndDialog(IDOK);
+	pDlg.DoModal();
+	return &pDlg;
+}
 void CClientDlg::OnBnClickedButton1()//登录按键
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -175,7 +193,7 @@ void CClientDlg::OnBnClickedButton1()//登录按键
 	strcpy_s(sl.m_sUserId,m_sLogID);
 	strcpy_s(sl.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
-	if(theApp.m_pMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl)))//INADDR_BROADCAST局域网广播
+	if(theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl)))//INADDR_BROADCAST局域网广播
 	{
 		//GetDlgMain();
 	}
@@ -192,8 +210,17 @@ void CClientDlg::OnBnClickedButton2()//注册按键
 	strcpy_s(sr.m_sUserId,m_sLogID);
 	strcpy_s(sr.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
-	if(theApp.m_pMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sr,sizeof(sr)))//INADDR_BROADCAST局域网广播
+	if(theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sr,sizeof(sr)))//INADDR_BROADCAST局域网广播
 	{
 		//GetDlgMain();
 	}
+}
+
+
+void CClientDlg::OnClose()
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	theApp.m_pUDPMediator->Close();
+	theApp.m_pTCPMediator->Close();
+	CDialogEx::OnClose();
 }

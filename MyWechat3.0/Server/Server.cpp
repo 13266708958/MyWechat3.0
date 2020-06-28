@@ -6,7 +6,7 @@
 #include "Server.h"
 #include "ServerDlg.h"
 #include"UDPMediator.h"
-
+#include"TCPMediator.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -20,14 +20,17 @@ END_MESSAGE_MAP()
 
 
 // CServerApp 构造
-
+std::list<long > CServerApp::addrList;
+std::map<CString ,long > CServerApp::m_mIdToAddr;
 CServerApp::CServerApp()
 {
 	// 支持重新启动管理器
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
 
 	// TODO: 在此处添加构造代码，
-	m_pMediator = new UDPMediator;
+	m_pUDPMediator = new UDPMediator;
+	m_pTCPMediator = new TCPMediator;
+	
 	// 将所有重要的初始化放置在 InitInstance 中
 }
 

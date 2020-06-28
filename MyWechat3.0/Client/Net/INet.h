@@ -4,6 +4,8 @@
 #include"PackDef.h"
 #include"Client.h"
 
+#include <winsock2.h>  
+#include <mstcpip.h> 
 class INet
 {
 public:

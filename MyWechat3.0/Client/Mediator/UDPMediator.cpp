@@ -5,6 +5,7 @@
 UDPMediator::UDPMediator(void)
 {
 	m_pNet =new UDPNet;
+	m_pdealDateStrategy = new DealDateStrategy();
 }
 
 
@@ -23,6 +24,10 @@ bool UDPMediator::Open()
 
 void UDPMediator::Close()
 {
+	STRU_OFFLINE so;
+	so.m_nType = _DEF_PROTOCOL_OFFLINE_RQ;
+	theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char*)&so,sizeof(so));
+
 	m_pNet->UnInitNetWork();
 }
 
@@ -35,5 +40,6 @@ bool UDPMediator::SendData(long lSendIp,char *szbuf,int nLen)
 
 void UDPMediator::DealData(long lRecvIp,char *szbuf)
 {
-
+	m_pdealDateFactory = m_pdealDateStrategy->CreateDealDateStrategy(szbuf);
+	m_pdealDateFactory->DealDate(lRecvIp,szbuf);
 }

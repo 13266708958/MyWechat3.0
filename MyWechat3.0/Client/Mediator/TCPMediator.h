@@ -10,8 +10,8 @@ public:
 public:
 	bool Open();
 	void Close();
-	bool SendData(char *szbuf,int nLen);
-	void DealData(long lRecvIp,char *szbuf);
+	bool SendData(SOCKET sock,char* szbuf,int nlen);
+	void DealData(SOCKET sock,char *szbuf);
 private:
 	INet *m_pNet;
 };
