@@ -78,7 +78,7 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 END_MESSAGE_MAP()
 LRESULT CClientDlg::OnLineMsg(WPARAM W,LPARAM L)
 {
-	GetDlgMain();
+	MessageBox(_T("Client Online!"));
 	return 0;
 }
 
@@ -175,14 +175,7 @@ HCURSOR CClientDlg::OnQueryDragIcon()
 }
 
 
-CDialogMain * CClientDlg::GetDlgMain()
-{
-	CDialogMain pDlg;
-	theApp.m_pMainWnd = &pDlg;
-	CClientDlg::EndDialog(IDOK);
-	pDlg.DoModal();
-	return &pDlg;
-}
+
 void CClientDlg::OnBnClickedButton1()//登录按键
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -193,9 +186,13 @@ void CClientDlg::OnBnClickedButton1()//登录按键
 	strcpy_s(sl.m_sUserId,m_sLogID);
 	strcpy_s(sl.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
-	if(theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl)))//INADDR_BROADCAST局域网广播
+	if(!theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl)))
 	{
-		//GetDlgMain();
+		MessageBox(_T("Client Log Message Send Fail !"));
+	}
+	else
+	{
+		GetDlgMain();
 	}
 }
 
@@ -210,13 +207,24 @@ void CClientDlg::OnBnClickedButton2()//注册按键
 	strcpy_s(sr.m_sUserId,m_sLogID);
 	strcpy_s(sr.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
-	if(theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sr,sizeof(sr)))//INADDR_BROADCAST局域网广播
+	if(!theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sr,sizeof(sr)))
 	{
-		//GetDlgMain();
+		MessageBox(_T("Client Reg Message Send Fail !"));
+	}
+	else
+	{
+		GetDlgMain();
 	}
 }
 
-
+CDialogMain * CClientDlg::GetDlgMain()
+{
+	CDialogMain pDlg;
+	theApp.m_pMainWnd = &pDlg;
+	CClientDlg::EndDialog(IDOK);
+	pDlg.DoModal();
+	return &pDlg;
+}
 void CClientDlg::OnClose()
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值

@@ -13,6 +13,8 @@ void Reg::DealDate(long lRecvIp,char *szbuf)
 	char str[100];
 	sprintf_s(str,"insert into Account values('%s','%s');",psr->m_sUserId,psr->m_sUserPassword);
 	theApp.m_Sql.UpdateMySql(str);
-
+	CString Id;
+	Id.Format("%s",psr->m_sUserId);
+	theApp.m_mIdToAddr[Id] = lRecvIp;
 	theApp.m_pMainWnd->SendMessage(UM_ONLINEMSG,(WPARAM)psr->m_szName,lRecvIp);
 }

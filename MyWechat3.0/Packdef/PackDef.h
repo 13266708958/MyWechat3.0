@@ -9,7 +9,7 @@
 #define _DEF_BUFFERSIZE 1024
 #define _DEF_IDSIZE      20
 #define _DEF_PASSWORDSIZE 40
-#define _DEF_SERVER_IP  "192.168.0.101"
+#define _DEF_SERVER_IP  "192.168.75.1"
 #define MAXPATH   260
 #define _DEF_FILECONTENTSIZE  2048
 enum {CLIENT ,SERVER};

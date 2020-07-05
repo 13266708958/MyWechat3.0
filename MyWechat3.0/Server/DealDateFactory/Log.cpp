@@ -24,6 +24,10 @@ void Log::DealDate(long lRecvIp,char *szbuf)
 		strlist.pop_front();
 		if(strcmp(passWord.c_str(),psl->m_sUserPassword) == 0)
 		{
+			CString Id;
+			Id.Format("%s",psl->m_sUserId);
+			theApp.m_mIdToAddr[Id] = lRecvIp;
+
 			theApp.m_pMainWnd->SendMessage(UM_ONLINEMSG,(WPARAM)psl->m_szName,lRecvIp);
 			break;
 		}

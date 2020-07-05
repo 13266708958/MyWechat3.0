@@ -2,6 +2,7 @@
 #include "afxcmn.h"
 #include"PackDef.h"
 #include"Client.h"
+#include"DialogChat.h"
 // CDialogMain 对话框
 
 class CDialogMain : public CDialogEx
@@ -23,4 +24,11 @@ public:
 	CListCtrl m_lFriendList;
 	afx_msg void OnBnClickedButton1();
 	CString m_sFriendId;
+	bool m_bAddFalge;
+	std::map<CString,CDialogChat *> m_mIdtoChat;//窗口和id的映射
+public:
+	LRESULT OnAddFriend(WPARAM W,LPARAM L);
+	LRESULT OnAddFriendChoice(WPARAM W,LPARAM L);
+	afx_msg void OnNMDblclkList1(NMHDR *pNMHDR, LRESULT *pResult);
+	CDialogChat *GetDlgChat(CString ChatIp);
 };

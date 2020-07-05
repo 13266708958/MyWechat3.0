@@ -89,7 +89,7 @@ LRESULT CServerDlg::OnLineMsg(WPARAM W,LPARAM L)
 			return 0;
 		ite++;
 	}
-
+	
 	theApp.addrList.push_front(ip);
 
 	m_lUserList.InsertItem(0,szname);//在用户名链表头部插入

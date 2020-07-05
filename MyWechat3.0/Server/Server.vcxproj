@@ -189,7 +189,8 @@
   <ItemGroup>
     <ClInclude Include="..\MySQL\CMySql.h" />
     <ClInclude Include="..\Packdef\PackDef.h" />
-    <ClInclude Include="DealDateFactory\AddFriend.h" />
+    <ClInclude Include="DealDateFactory\AddFriendRQ.h" />
+    <ClInclude Include="DealDateFactory\AddFriendRS.h" />
     <ClInclude Include="DealDateFactory\DealDateFactory.h" />
     <ClInclude Include="DealDateFactory\Log.h" />
     <ClInclude Include="DealDateFactory\Reg.h" />
@@ -208,7 +209,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\MySQL\CMySql.cpp" />
-    <ClCompile Include="DealDateFactory\AddFriend.cpp" />
+    <ClCompile Include="DealDateFactory\AddFriendRQ.cpp" />
+    <ClCompile Include="DealDateFactory\AddFriendRS.cpp" />
     <ClCompile Include="DealDateFactory\Log.cpp" />
     <ClCompile Include="DealDateFactory\Reg.cpp" />
     <ClCompile Include="Mediator\TCPMediator.cpp" />

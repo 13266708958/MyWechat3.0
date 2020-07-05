@@ -49,12 +49,11 @@ bool UDPNet::InitNetWork()
 	else
 		printf("The Winsock 2.2 dll was found okay\n");
 
+
 	//2.创建套接字
 	m_sSock = socket(AF_INET,SOCK_DGRAM,IPPROTO_UDP);
-	u_long uval =1;
-	ioctlsocket(m_sSock,FIONBIO,&uval);//设置socket为非阻塞
 
-	
+
 	if(INVALID_SOCKET == m_sSock)
 	{
 		UnInitNetWork();
@@ -97,17 +96,14 @@ unsigned  __stdcall UDPNet::ThreadProc( void * lpvoid)
 	//fd_set fTemp;
 	while(pthis->m_bQuit)
 	{
-		/*fTemp= pthis->m_fd;
-		if(FD_ISSET(pthis->m_sSock,&fTemp))*/
+		ZeroMemory(szbuf,_DEF_PACKSIZE);
+		nRelReadNum = recvfrom(pthis->m_sSock,szbuf,sizeof(szbuf),0,(sockaddr *)&addrClient,&nsize);
+		if( nRelReadNum>0 )
 		{
-			ZeroMemory(szbuf,_DEF_PACKSIZE);
-			nRelReadNum = recvfrom(pthis->m_sSock,szbuf,sizeof(szbuf),0,(sockaddr *)&addrClient,&nsize);
-			if( nRelReadNum>0 )
-			{
-				//处理接收的数据
-				theApp.m_pUDPMediator->DealData(addrClient.sin_addr.s_addr,szbuf);
-			}
+			//处理接收的数据
+			theApp.m_pUDPMediator->DealData(addrClient.sin_addr.S_un.S_addr,szbuf);
 		}
+
 	}
 	return 0;
 }
@@ -128,7 +124,7 @@ void UDPNet::UnInitNetWork()
 		closesocket(m_sSock);
 		m_sSock = NULL;
 	}
-	
+
 	WSACleanup();//卸载库
 }
 

@@ -189,9 +189,13 @@
     <ClInclude Include="..\Packdef\PackDef.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientDlg.h" />
+    <ClInclude Include="DealDateFactory\AddFriendRQ.h" />
+    <ClInclude Include="DealDateFactory\AddFriendRS.h" />
     <ClInclude Include="DealDateFactory\DealDateFactory.h" />
     <ClInclude Include="DealDateFactory\OnLine.h" />
     <ClInclude Include="DealDateStrategy\DealDateStrategy.h" />
+    <ClInclude Include="DialogChat.h" />
+    <ClInclude Include="DialogChoice.h" />
     <ClInclude Include="DialogMain.h" />
     <ClInclude Include="Mediator\IMediator.h" />
     <ClInclude Include="Mediator\TCPMediator.h" />
@@ -206,7 +210,11 @@
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientDlg.cpp" />
+    <ClCompile Include="DealDateFactory\AddFriendRQ.cpp" />
+    <ClCompile Include="DealDateFactory\AddFriendRS.cpp" />
     <ClCompile Include="DealDateFactory\OnLine.cpp" />
+    <ClCompile Include="DialogChat.cpp" />
+    <ClCompile Include="DialogChoice.cpp" />
     <ClCompile Include="DialogMain.cpp" />
     <ClCompile Include="Mediator\TCPMediator.cpp" />
     <ClCompile Include="Mediator\UDPMediator.cpp" />

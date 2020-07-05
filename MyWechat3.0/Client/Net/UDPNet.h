@@ -16,7 +16,7 @@ public:
 public:
 	static  unsigned  __stdcall ThreadProc( void * );
 public:
-	//fd_set m_fd;
+	fd_set m_fd;
 	bool m_bQuit;
 	SOCKET m_sSock;
 	HANDLE m_hThread;

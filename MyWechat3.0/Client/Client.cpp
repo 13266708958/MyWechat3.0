@@ -20,7 +20,8 @@ END_MESSAGE_MAP()
 
 
 // CClientApp 构造
-
+std::list<CString > CClientApp::m_lFriendList;
+std::map<CString ,long > CClientApp::m_mIdToAddr;
 CClientApp::CClientApp()
 {
 	// 支持重新启动管理器
@@ -30,6 +31,7 @@ CClientApp::CClientApp()
 	// 将所有重要的初始化放置在 InitInstance 中
 	m_pUDPMediator = new UDPMediator;
 	m_pTCPMediator = new TCPMediator;
+	m_dlgChat =NULL;
 }
 
 

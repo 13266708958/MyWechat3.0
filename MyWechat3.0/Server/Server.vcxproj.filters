@@ -84,7 +84,10 @@
     <ClInclude Include="DealDateFactory\Reg.h">
       <Filter>数据处理</Filter>
     </ClInclude>
-    <ClInclude Include="DealDateFactory\AddFriend.h">
+    <ClInclude Include="DealDateFactory\AddFriendRQ.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\AddFriendRS.h">
       <Filter>数据处理</Filter>
     </ClInclude>
   </ItemGroup>
@@ -119,7 +122,10 @@
     <ClCompile Include="DealDateFactory\Reg.cpp">
       <Filter>数据处理</Filter>
     </ClCompile>
-    <ClCompile Include="DealDateFactory\AddFriend.cpp">
+    <ClCompile Include="DealDateFactory\AddFriendRQ.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\AddFriendRS.cpp">
       <Filter>数据处理</Filter>
     </ClCompile>
   </ItemGroup>
