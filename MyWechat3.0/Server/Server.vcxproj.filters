@@ -90,6 +90,12 @@
     <ClInclude Include="DealDateFactory\AddFriendRS.h">
       <Filter>数据处理</Filter>
     </ClInclude>
+    <ClInclude Include="DealDateFactory\ChangePos.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\DateInfo.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">
@@ -126,6 +132,12 @@
       <Filter>数据处理</Filter>
     </ClCompile>
     <ClCompile Include="DealDateFactory\AddFriendRS.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\ChangePos.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\DateInfo.cpp">
       <Filter>数据处理</Filter>
     </ClCompile>
   </ItemGroup>

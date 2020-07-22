@@ -191,6 +191,8 @@
     <ClInclude Include="..\Packdef\PackDef.h" />
     <ClInclude Include="DealDateFactory\AddFriendRQ.h" />
     <ClInclude Include="DealDateFactory\AddFriendRS.h" />
+    <ClInclude Include="DealDateFactory\ChangePos.h" />
+    <ClInclude Include="DealDateFactory\DateInfo.h" />
     <ClInclude Include="DealDateFactory\DealDateFactory.h" />
     <ClInclude Include="DealDateFactory\Log.h" />
     <ClInclude Include="DealDateFactory\Reg.h" />
@@ -211,6 +213,8 @@
     <ClCompile Include="..\MySQL\CMySql.cpp" />
     <ClCompile Include="DealDateFactory\AddFriendRQ.cpp" />
     <ClCompile Include="DealDateFactory\AddFriendRS.cpp" />
+    <ClCompile Include="DealDateFactory\ChangePos.cpp" />
+    <ClCompile Include="DealDateFactory\DateInfo.cpp" />
     <ClCompile Include="DealDateFactory\Log.cpp" />
     <ClCompile Include="DealDateFactory\Reg.cpp" />
     <ClCompile Include="Mediator\TCPMediator.cpp" />

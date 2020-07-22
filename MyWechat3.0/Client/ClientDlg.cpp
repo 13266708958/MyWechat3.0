@@ -19,13 +19,13 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// 对话框数据
+	// 对话框数据
 	enum { IDD = IDD_ABOUTBOX };
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
-// 实现
+	// 实现
 protected:
 	DECLARE_MESSAGE_MAP()
 
@@ -70,17 +70,11 @@ BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_MESSAGE(UM_ONLINEMSG,&CClientDlg::OnLineMsg)
 	ON_BN_CLICKED(IDC_BUTTON1, &CClientDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &CClientDlg::OnBnClickedButton2)
 
 	ON_WM_CLOSE()
 END_MESSAGE_MAP()
-LRESULT CClientDlg::OnLineMsg(WPARAM W,LPARAM L)
-{
-	MessageBox(_T("Client Online!"));
-	return 0;
-}
 
 // CClientDlg 消息处理程序
 
@@ -184,18 +178,21 @@ void CClientDlg::OnBnClickedButton1()//登录按键
 	gethostname(sl.m_szName,sizeof(sl.m_szName));//获取主机名
 	UpdateData(TRUE);
 	strcpy_s(sl.m_sUserId,m_sLogID);
+	theApp.m_sID = m_sLogID;
 	strcpy_s(sl.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
+	CDialogMain pDlg;
+	theApp.m_pMainWnd = &pDlg;
+	CClientDlg::EndDialog(IDOK);
 	if(!theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sl,sizeof(sl)))
 	{
 		MessageBox(_T("Client Log Message Send Fail !"));
 	}
 	else
 	{
-		GetDlgMain();
+		pDlg.DoModal();
 	}
 }
-
 
 void CClientDlg::OnBnClickedButton2()//注册按键
 {
@@ -205,15 +202,19 @@ void CClientDlg::OnBnClickedButton2()//注册按键
 	gethostname(sr.m_szName,sizeof(sr.m_szName));
 	UpdateData(TRUE);
 	strcpy_s(sr.m_sUserId,m_sLogID);
+	theApp.m_sID = m_sLogID;
 	strcpy_s(sr.m_sUserPassword,m_sLogPassword);
 	UpdateData(FALSE);
+	CDialogMain pDlg;
+	theApp.m_pMainWnd = &pDlg;
+	CClientDlg::EndDialog(IDOK);
 	if(!theApp.m_pUDPMediator->SendData(inet_addr(_DEF_SERVER_IP),(char *)&sr,sizeof(sr)))
 	{
 		MessageBox(_T("Client Reg Message Send Fail !"));
 	}
 	else
 	{
-		GetDlgMain();
+		pDlg.DoModal();
 	}
 }
 

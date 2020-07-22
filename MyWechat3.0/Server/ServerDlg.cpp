@@ -70,16 +70,19 @@ END_MESSAGE_MAP()
 // CServerDlg 消息处理程序
 LRESULT CServerDlg::OnLineMsg(WPARAM W,LPARAM L)
 {
-	STRU_ONLINE so;
-	long ip = (long )L;
-
-	char *szname = ( char * )W;
+	
+	STRU_ONLINE *pso = (STRU_ONLINE *)W;
+	char *szname = pso->m_szName;
 	in_addr  addr;
 	addr.S_un.S_addr = L;
 	char *szip =  inet_ntoa(addr);
 
+	STRU_ONLINE so;
+	long ip = (long )L;
+
 	so.m_nType = _DEF_PROTOCOL_ONLINE_RS;//上线确认消息
 	gethostname(so.m_szName,sizeof(so.m_szName));//获取主机名
+	strcpy_s(so.m_sUserId,pso->m_sUserId);
 	theApp.m_pUDPMediator->SendData(ip,(char*)&so,sizeof(so));
 
 	auto ite =theApp.addrList.begin();

@@ -75,6 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files\MySQL\MySQL Server 5.7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files\MySQL\MySQL Server 5.7\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -113,7 +115,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./Mediator;./Net;../Packdef;../Client;../;./DealDateFactory;../DealDateFactory;./DealDateStrategy;../DealDateStrategy;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Mediator;./Net;../Packdef;../Client;../;./DealDateFactory;../DealDateFactory;./DealDateStrategy;../DealDateStrategy;E:\MyWechat3.0\MyWechat3.0\MySQL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -186,11 +188,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\MySQL\CMySql.h" />
     <ClInclude Include="..\Packdef\PackDef.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="ClientDlg.h" />
     <ClInclude Include="DealDateFactory\AddFriendRQ.h" />
     <ClInclude Include="DealDateFactory\AddFriendRS.h" />
+    <ClInclude Include="DealDateFactory\ChangePos.h" />
+    <ClInclude Include="DealDateFactory\DateInfo.h" />
     <ClInclude Include="DealDateFactory\DealDateFactory.h" />
     <ClInclude Include="DealDateFactory\OnLine.h" />
     <ClInclude Include="DealDateStrategy\DealDateStrategy.h" />
@@ -208,10 +213,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\MySQL\CMySql.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientDlg.cpp" />
     <ClCompile Include="DealDateFactory\AddFriendRQ.cpp" />
     <ClCompile Include="DealDateFactory\AddFriendRS.cpp" />
+    <ClCompile Include="DealDateFactory\ChangePos.cpp" />
+    <ClCompile Include="DealDateFactory\DateInfo.cpp" />
     <ClCompile Include="DealDateFactory\OnLine.cpp" />
     <ClCompile Include="DialogChat.cpp" />
     <ClCompile Include="DialogChoice.cpp" />

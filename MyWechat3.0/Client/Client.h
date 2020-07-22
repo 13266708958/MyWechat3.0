@@ -11,6 +11,7 @@
 #include "resource.h"		// Ö÷·ûºÅ
 #include"IMediator.h"
 #include"DialogChat.h"
+#include"CMySql.h"
 #include<list>
 #include<map>
 // CClientApp:
@@ -31,6 +32,8 @@ public:
 	IMediator * m_pUDPMediator;
 	IMediator * m_pTCPMediator;
 	CDialogChat *m_dlgChat;
+	CMySql m_Sql;
+	CString m_sID;
 public:
 
 	DECLARE_MESSAGE_MAP()

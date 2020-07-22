@@ -3,6 +3,8 @@
 #include"OnLine.h"
 #include"AddFriendRQ.h"
 #include"AddFriendRS.h"
+#include"ChangePos.h"
+#include"DateInfo.h"
 class DealDateStrategy
 {
 public:
@@ -21,6 +23,12 @@ public:
 			break;
 		case _DEF_PROTOCOL_ADDFRIEND_RS://添加好友回复
 			m_pDealDateFactory = new AddFriendRS();
+			break;
+		case _DEF_PROTOCOL_CHANGEPOS://窗口震动
+			m_pDealDateFactory = new ChangePos();
+			break;
+		case _DEF_PROTOCOL_DATAINFO_RQ://发送数据
+			m_pDealDateFactory = new DateInfo();
 			break;
 		}
 		return m_pDealDateFactory;

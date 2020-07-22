@@ -22,7 +22,6 @@ public:
 // 实现
 protected:
 	HICON m_hIcon;
-
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
@@ -31,8 +30,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CDialogMain * GetDlgMain();
-public:
-	LRESULT OnLineMsg(WPARAM W,LPARAM L);//上线
 public:
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();

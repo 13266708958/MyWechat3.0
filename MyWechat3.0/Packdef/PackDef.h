@@ -1,6 +1,6 @@
 #ifndef _PACKDEF_H_
 #define _PACKDEF_H_
-
+#include<list>
 #define _DEF_PORT 1234
 #define _DEF_PORT_CLIENT 1235
 #define _DEF_PORT_SERVER 1236
@@ -9,7 +9,7 @@
 #define _DEF_BUFFERSIZE 1024
 #define _DEF_IDSIZE      20
 #define _DEF_PASSWORDSIZE 40
-#define _DEF_SERVER_IP  "192.168.75.1"
+#define _DEF_SERVER_IP  "192.168.0.102"
 #define MAXPATH   260
 #define _DEF_FILECONTENTSIZE  2048
 enum {CLIENT ,SERVER};
@@ -89,6 +89,7 @@ struct STRU_ONLINE
 {
 	PackType m_nType;
 	char     m_szName[_DEF_SIZE];
+	char     m_sUserId[_DEF_IDSIZE];
 };
 
 struct STRU_OFFLINE

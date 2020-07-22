@@ -25,6 +25,9 @@
     <Filter Include="数据处理">
       <UniqueIdentifier>{1283af5e-429a-441a-92c9-b55bc9322b76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="数据库">
+      <UniqueIdentifier>{c0e602aa-a0fb-478d-b599-d9eeb4ace514}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -90,6 +93,15 @@
     <ClInclude Include="DialogChat.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DealDateFactory\ChangePos.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="DealDateFactory\DateInfo.h">
+      <Filter>数据处理</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MySQL\CMySql.h">
+      <Filter>数据库</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -130,6 +142,15 @@
     </ClCompile>
     <ClCompile Include="DialogChat.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\ChangePos.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="DealDateFactory\DateInfo.cpp">
+      <Filter>数据处理</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MySQL\CMySql.cpp">
+      <Filter>数据库</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -17,8 +17,7 @@ void Log::DealDate(long lRecvIp,char *szbuf)
 	string passWord;
 	sprintf_s(str,"select PassWord from Account where ID = '%s';",psl->m_sUserId);
 	theApp.m_Sql.SelectMySql(str,1,strlist);
-	auto ite = strlist.begin();
-	while(ite !=strlist.end())
+	while( !strlist.empty())
 	{
 		passWord =strlist.front();
 		strlist.pop_front();
@@ -27,8 +26,10 @@ void Log::DealDate(long lRecvIp,char *szbuf)
 			CString Id;
 			Id.Format("%s",psl->m_sUserId);
 			theApp.m_mIdToAddr[Id] = lRecvIp;
-
-			theApp.m_pMainWnd->SendMessage(UM_ONLINEMSG,(WPARAM)psl->m_szName,lRecvIp);
+			STRU_ONLINE *pso = new STRU_ONLINE();
+			strcpy_s(pso->m_sUserId,_DEF_IDSIZE,psl->m_sUserId);
+			strcpy_s(pso->m_szName,_DEF_SIZE,psl->m_szName);
+			theApp.m_pMainWnd->SendMessage(UM_ONLINEMSG,(WPARAM)pso,lRecvIp);
 			break;
 		}
 

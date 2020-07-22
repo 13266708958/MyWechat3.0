@@ -32,6 +32,7 @@ CClientApp::CClientApp()
 	m_pUDPMediator = new UDPMediator;
 	m_pTCPMediator = new TCPMediator;
 	m_dlgChat =NULL;
+	
 }
 
 
@@ -74,6 +75,9 @@ BOOL CClientApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 	SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
+
+	if(!m_Sql.ConnectMySql(_DEF_SERVER_IP,"root","ji123698745","Chat_UserAccount",3306))
+		return false;
 
 	CClientDlg dlg;
 	m_pMainWnd = &dlg;
